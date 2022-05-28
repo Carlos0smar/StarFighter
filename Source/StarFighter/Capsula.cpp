@@ -21,6 +21,7 @@ ACapsula::ACapsula():Super()
 
 	SetCapsulaName("Velocidad");
 
+
 	MoveRandCap = CreateDefaultSubobject<URandomMovementComponent_BP>(TEXT("MoverRandCap"));
 }
 

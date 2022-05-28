@@ -17,6 +17,7 @@
 
 AEnemigoAereo1::AEnemigoAereo1()
 {
+	
 
 	RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
 	bCanFire = true;
@@ -42,8 +43,6 @@ void AEnemigoAereo1::BeginPlay()
 {
 	Super::BeginPlay();
 
-
-
 }
 
 void AEnemigoAereo1::Tick(float DeltaTime)
@@ -56,10 +55,22 @@ void AEnemigoAereo1::Tick(float DeltaTime)
 
 	FireShot();
 
+	SpawnCoolDown = 1.f;
+	cont+=1;		
+
+	UWorld* World = GetWorld();
+	float start = World->GetTimeSeconds();
+
+	int start1 = (int)start;
+
+		if (start1==60) {
+			BulletCont(cont);
+		}
+
 	}
 
-
 }
+
 
 
 
@@ -96,5 +107,17 @@ void AEnemigoAereo1::FireShot()
 void AEnemigoAereo1::ShotTimerExpired()
 {
 	bCanFire = true;
+}
+
+void AEnemigoAereo1::BulletCont(int cant)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%d"), cant));
+}
+
+void AEnemigoAereo1::SetupPlayerInputComponent(UInputComponent* EnemyInputComponent)
+{
+	check(EnemyInputComponent);
+
+	//EnemyInputComponent->BindAction(TEXT("BulletCont"), IE_Pressed, this, &AEnemigoAereo1::);
 }
 

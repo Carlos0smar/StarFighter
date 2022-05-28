@@ -20,6 +20,8 @@ public:
 	AEnemigoAereo1();
 
 	uint32 bCanFire : 1;
+	
+	int cont = 0;
 
 protected:
 
@@ -49,9 +51,6 @@ public:
 
 	/* Fire a shot in the specified direction */
 	void FireShot();
-	
-	UPROPERTY(EditAnywhere, Category = "Component")
-		TSubclassOf<class AProyectil> Bala_BP;
 
 	UPROPERTY(EditAnywhere)
 		USceneComponent* BulletSpawnPoint;
@@ -59,9 +58,11 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Component")
 		class UProjectileMovementComponent* ProjectileMove;
 
-	const float MaxShootCoolDown = 2.0f;
-	float ShootCoolDown = 0.0f;
+
 	
 	//void Fire();
 	void ShotTimerExpired();
+
+	void BulletCont(int cont);
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 };

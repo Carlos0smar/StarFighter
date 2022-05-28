@@ -26,6 +26,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	int cantSpawn = 5;
 
 	UPROPERTY(VisibleAnywhere, Category = "Spawing")
 		class UBoxComponent* WhereToSpawn;

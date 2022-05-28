@@ -22,6 +22,7 @@ private:
 public:
 	ACapsula();
 
+
 protected:
 	virtual void BeginPlay() override;
 

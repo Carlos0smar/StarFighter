@@ -22,8 +22,8 @@ void ASpawnValue::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SpawnClasses.Add(AEnemigoAereo1::StaticClass());
-	UE_LOG(LogTemp, Warning, TEXT("Box: %s"), *WhereToSpawn->GetScaledBoxExtent().ToString());
+    SpawnClasses.Add(AEnemigoAereo1::StaticClass());
+    UE_LOG(LogTemp, Warning, TEXT("Box: %s"), *WhereToSpawn->GetScaledBoxExtent().ToString());
 
     SpawnClasses.Add(ACapsula::StaticClass());
     UE_LOG(LogTemp, Warning, TEXT("Box: %s"), *WhereToSpawn->GetScaledBoxExtent().ToString());
