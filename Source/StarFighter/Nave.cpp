@@ -17,7 +17,6 @@ ANave::ANave()
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
 
-
 }
 
 // Called when the game starts or when spawned

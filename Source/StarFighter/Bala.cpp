@@ -25,15 +25,3 @@ void ABala::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-/*void ABala::NotifyActorBeginOverlap(AActor* OtherActor)
-{
-    Super::NotifyActorBeginOverlap(OtherActor);
-
-    UE_LOG(LogTemp, Warning, TEXT("collect with %s"), *OtherActor->GetFName().ToString());
-    ANaveJugador* player = Cast<ANaveJugador>(OtherActor);
-    if (player)
-    {
-        player->Destroy();
-        this->Destroy();
-    }
-}*/

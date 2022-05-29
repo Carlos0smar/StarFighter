@@ -3,6 +3,7 @@
 
 #include "EnemigoAereo1.h"
 #include "Bala.h"
+#include "Proyectil.h"
 #include "RandomMovementComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -20,22 +21,11 @@ AEnemigoAereo1::AEnemigoAereo1()
 	
 
 	RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
-	bCanFire = true;
-
-	BulletSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("BulletSpawnPoint"));
-	BulletSpawnPoint->SetupAttachment(RootComponent);
-
-	FVector FireDirection;
-
-	MoveSpeed = 1.f;
 
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = false;
-
-
-
-
+	
 
 }
 
@@ -87,14 +77,14 @@ void AEnemigoAereo1::FireShot()
 		FireRotation.Yaw = 180.f;
 		//const FRotator FireRotation = FireDirection.Rotation();
 		// Spawn projectile at an offset from this pawn
-		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+		FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
 
 		UWorld* const World = GetWorld();
 		if (World != nullptr)
 		{
 			// spawn the projectile
 			World->SpawnActor<ABala>(SpawnLocation, FireRotation);
-
+		
 		}
 
 		World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AEnemigoAereo1::ShotTimerExpired, FireRate);
@@ -114,10 +104,4 @@ void AEnemigoAereo1::BulletCont(int cant)
 	GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("%d"), cant));
 }
 
-void AEnemigoAereo1::SetupPlayerInputComponent(UInputComponent* EnemyInputComponent)
-{
-	check(EnemyInputComponent);
-
-	//EnemyInputComponent->BindAction(TEXT("BulletCont"), IE_Pressed, this, &AEnemigoAereo1::);
-}
 

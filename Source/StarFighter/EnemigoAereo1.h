@@ -34,9 +34,6 @@ public:
 	float NextSpawnCoolDown = 2.0f;
 	float SpawnCoolDown = 0.0f;
 
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float MoveSpeed;
-
 
 	UPROPERTY()
 		class URandomMovementComponent* RandMove;
@@ -52,17 +49,11 @@ public:
 	/* Fire a shot in the specified direction */
 	void FireShot();
 
-	UPROPERTY(EditAnywhere)
-		USceneComponent* BulletSpawnPoint;
-
-	UPROPERTY(EditAnywhere, Category = "Component")
-		class UProjectileMovementComponent* ProjectileMove;
-
 
 	
 	//void Fire();
 	void ShotTimerExpired();
 
 	void BulletCont(int cont);
-	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+
 };
