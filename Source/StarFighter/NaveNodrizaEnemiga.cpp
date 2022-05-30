@@ -11,7 +11,7 @@ ANaveNodrizaEnemiga::ANaveNodrizaEnemiga()
 {
 
 
-	RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
+	//RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
 
 	ShipMeshComponent->SetWorldScale3D(FVector(2.f, 2.f, 2.f));
 	//ShipMeshComponent->SetRelativeScale3D(FVector(2.f, 2.f, 2.f));

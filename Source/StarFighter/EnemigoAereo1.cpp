@@ -18,7 +18,6 @@
 
 AEnemigoAereo1::AEnemigoAereo1()
 {
-	
 
 	RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
 
@@ -26,7 +25,6 @@ AEnemigoAereo1::AEnemigoAereo1()
 	FireRate = 0.1f;
 	bCanFire = false;
 	
-
 }
 
 void AEnemigoAereo1::BeginPlay()

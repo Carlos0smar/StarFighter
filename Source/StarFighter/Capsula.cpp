@@ -23,6 +23,8 @@ ACapsula::ACapsula():Super()
 
 
 	MoveRandCap = CreateDefaultSubobject<URandomMovementComponent_BP>(TEXT("MoverRandCap"));
+
+
 }
 
 void ACapsula::BeginPlay()

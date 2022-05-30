@@ -22,6 +22,8 @@ private:
 public:
 	ACapsula();
 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
+	//	TSubclassOf<ACapsula> Vidas;
 
 protected:
 	virtual void BeginPlay() override;
@@ -29,6 +31,7 @@ protected:
 public:
 
 	virtual void Tick(float DeltaTime) override;
+
 
 	UPROPERTY()
 		class URandomMovementComponent_BP* MoveRandCap;
