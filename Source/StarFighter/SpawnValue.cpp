@@ -2,6 +2,7 @@
 
 
 #include "SpawnValue.h"
+#include "NaveNodrizaEnemiga.h"
 #include "EnemigoAereo1.h"
 #include "Capsula.h"
 #include "Components/BoxComponent.h"

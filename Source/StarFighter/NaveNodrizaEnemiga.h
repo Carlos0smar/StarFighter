@@ -14,33 +14,20 @@ class STARFIGHTER_API ANaveNodrizaEnemiga : public ANave
 {
 	GENERATED_BODY()
 
-public:
+private:
 	
+	static ANaveNodrizaEnemiga* NaveNodrizaInstance;
+
 	ANaveNodrizaEnemiga();
 
-
-
-	UPROPERTY()
-		class URandomMovementComponent* RandMove;
-
-
-
-	uint32 bCanFire : 1;
-
-	FTimerHandle TimerHandle_ShotTimerExpired;
-
-
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float FireRate;
-
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		FVector GunOffset;
 
 protected:
 
 	virtual void BeginPlay() override;
 
 public:
+
+	static ANaveNodrizaEnemiga* GetNaveNodrizaInstance();
 
 	virtual void Tick(float DeltaTime) override;
 
@@ -50,4 +37,19 @@ public:
 	void FireShot();
 
 	void ShotTimerExpired();
+
+
+
+	uint32 bCanFire : 1;
+
+	FTimerHandle TimerHandle_ShotTimerExpired;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+		float FireRate;
+
+	UPROPERTY();
+	class URandomMovementComponent* RandMove;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+		FVector GunOffset;
 };

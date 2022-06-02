@@ -18,6 +18,9 @@ const FName ANaveJugador::FireBinding("Fire");
 
 ANaveJugador::ANaveJugador()
 {
+
+	//Cap = CreateDefaultSubobject<UCapsula>(TEXT("Cpasula"));
+
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->SetUsingAbsoluteRotation(true); // Don't want arm to rotate when ship does
@@ -176,13 +179,18 @@ void ANaveJugador::NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, c
 					MoveSpeed += pair.Value;
 				}
 				break;
+
+				/*if (Name == "Vidas") {
+					pair.Value = GetMenosVida(pair.Value);
+				}
+				break;*/
 			}
 
-			if (pair.Key == Name + "neg")
+			/*if (pair.Key == Name)
 			{
 				pair.Value = pair.Value - 1;
 				break;
-			}
+			}*/
 		}
 
 		TakeItem(CapsulaItem);

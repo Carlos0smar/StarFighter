@@ -67,6 +67,12 @@ public:
 
 
 
+//	UPROPERTY()
+//		class UCapsula* Cap;
+
+
+
+
 	static const FName MoveForwardBinding;
 	static const FName MoveRightBinding;
 	static const FName FireBinding;

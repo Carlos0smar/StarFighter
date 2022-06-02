@@ -22,8 +22,10 @@ private:
 public:
 	ACapsula();
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
-	//	TSubclassOf<ACapsula> Vidas;
+
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Datos", meta = (AllowPrivateAccess = "true"))
+//		float MenosVida;
+
 
 protected:
 	virtual void BeginPlay() override;
@@ -37,7 +39,7 @@ public:
 		class URandomMovementComponent_BP* MoveRandCap;
 
 	virtual void PickUp();
-
+//	FORCEINLINE float GetMenosVida(float quitar){ return quitar -= 5; };
 
 	FORCEINLINE FString GetCapsulaName() const { return CapsulaName; };
 	FORCEINLINE void SetCapsulaName(const FString _CapsulaName) { CapsulaName = _CapsulaName; }

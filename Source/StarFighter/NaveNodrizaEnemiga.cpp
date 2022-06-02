@@ -4,29 +4,44 @@
 #include "NaveNodrizaEnemiga.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "RandomMovementComponent.h"
+#include "Math/TransformNonVectorized.h"
 #include "Bala.h"
+#include "UObject/UObjectGlobals.h"
 
+ANaveNodrizaEnemiga* ANaveNodrizaEnemiga::NaveNodrizaInstance = nullptr;
 
 ANaveNodrizaEnemiga::ANaveNodrizaEnemiga()
 {
 
 
-	//RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
+	RandMove = CreateDefaultSubobject<URandomMovementComponent>(TEXT("RandomMovement"));
 
 	ShipMeshComponent->SetWorldScale3D(FVector(2.f, 2.f, 2.f));
 	//ShipMeshComponent->SetRelativeScale3D(FVector(2.f, 2.f, 2.f));
 	FRotator Rotation;
 	Rotation.Yaw = 180.0f;
-	ShipMeshComponent->SetWorldRotation(Rotation);
+    ShipMeshComponent->SetWorldRotation(Rotation);
 
 	GunOffset = FVector(120.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = false;
 }
 
+ANaveNodrizaEnemiga* ANaveNodrizaEnemiga::GetNaveNodrizaInstance()
+{
+
+	if (NaveNodrizaInstance == nullptr)
+	{
+		NaveNodrizaInstance = NewObject<ANaveNodrizaEnemiga>();
+	}
+
+	return NaveNodrizaInstance;
+}
+
 void ANaveNodrizaEnemiga::BeginPlay()
 {
 	Super::BeginPlay();
+
 }
 
 void ANaveNodrizaEnemiga::Tick(float DeltaTime)
@@ -37,12 +52,12 @@ void ANaveNodrizaEnemiga::Tick(float DeltaTime)
 	SpawnCoolDown += DeltaTime;
 	if (SpawnCoolDown >= NextSpawnCoolDown)
 	{
-
 		FireShot();
 
 		SpawnCoolDown = 0.f;
 
 	}
+
 
 }
 
@@ -68,18 +83,21 @@ void ANaveNodrizaEnemiga::Tick(float DeltaTime)
 				// spawn the projectile
 				World->SpawnActor<ABala>(SpawnLocation, FireRotation);
 
-				FireRotation.Yaw = 0.f;
+				FireRotation.Yaw = 135.f;
 				SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
 				World->SpawnActor<ABala>(SpawnLocation, FireRotation);
 
-				FireRotation.Yaw = 90.f;
+				FireRotation.Yaw = 45.f;
 				SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
 				World->SpawnActor<ABala>(SpawnLocation, FireRotation);
 
-				FireRotation.Yaw = 270.f;
+				FireRotation.Yaw = 225.f;
 				SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
 				World->SpawnActor<ABala>(SpawnLocation, FireRotation);
 
+				FireRotation.Yaw = 310.f;
+				SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+				World->SpawnActor<ABala>(SpawnLocation, FireRotation);
 			}
 
 			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveNodrizaEnemiga::ShotTimerExpired, FireRate);

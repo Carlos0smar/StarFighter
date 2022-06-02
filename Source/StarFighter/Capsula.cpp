@@ -20,12 +20,14 @@ ACapsula::ACapsula():Super()
 	SetActorEnableCollision(true);
 
 	SetCapsulaName("Velocidad");
-
+	 
 
 	MoveRandCap = CreateDefaultSubobject<URandomMovementComponent_BP>(TEXT("MoverRandCap"));
 
 
+
 }
+
 
 void ACapsula::BeginPlay()
 {
