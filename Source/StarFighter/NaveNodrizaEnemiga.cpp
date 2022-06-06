@@ -25,6 +25,7 @@ ANaveNodrizaEnemiga::ANaveNodrizaEnemiga()
 	GunOffset = FVector(120.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = false;
+
 }
 
 ANaveNodrizaEnemiga* ANaveNodrizaEnemiga::GetNaveNodrizaInstance()
@@ -35,12 +36,36 @@ ANaveNodrizaEnemiga* ANaveNodrizaEnemiga::GetNaveNodrizaInstance()
 		NaveNodrizaInstance = NewObject<ANaveNodrizaEnemiga>();
 	}
 
+
 	return NaveNodrizaInstance;
 }
 
 void ANaveNodrizaEnemiga::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnInstance();
+
+	/*UWorld* World = GetWorld();
+	float start = World->GetTimeSeconds();
+
+	int start1 = (int)start;
+
+	if (start1 == 10) {
+		//SpawnInstance();
+		NaveNodrizaInstance = GetWorld()->SpawnActor<ANaveNodrizaEnemiga>(FVector(880.f, 30.f, 150.f), FRotator(1.f, 6.f, 9.f));
+	}*/
+
+
+}
+	
+
+
+void ANaveNodrizaEnemiga::SpawnInstance() 
+{
+
+	NaveNodrizaInstance = GetWorld()->SpawnActor<ANaveNodrizaEnemiga>(FVector(0.f, 0.f, 150.f), FRotator(0.f, 0.f, 0.f));
+
 
 }
 

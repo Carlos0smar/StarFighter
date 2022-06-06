@@ -38,6 +38,7 @@ public:
 
 	void ShotTimerExpired();
 
+	void SpawnInstance();
 
 
 	uint32 bCanFire : 1;

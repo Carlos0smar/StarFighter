@@ -25,6 +25,8 @@ void ASpawnValue::BeginPlay()
 
     SpawnClasses.Add(AEnemigoAereo1::StaticClass());
     UE_LOG(LogTemp, Warning, TEXT("Box: %s"), *WhereToSpawn->GetScaledBoxExtent().ToString());
+    
+    
 
     SpawnClasses.Add(ACapsula::StaticClass());
     UE_LOG(LogTemp, Warning, TEXT("Box: %s"), *WhereToSpawn->GetScaledBoxExtent().ToString());
@@ -50,6 +52,9 @@ void ASpawnValue::Tick(float DeltaTime)
         FRotator Rotation = GetActorRotation();
         Rotation.Yaw = 180.0f;
         GetWorld()->SpawnActor(SpawnClasses[Index], &Location, &Rotation);
+       // ANaveNodrizaEnemiga* Instance = NaveNodriza->GetNaveNodrizaInstance();
+       // GetWorld()->SpawnActor(ANaveNodrizaEnemiga, &Location, &Rotation);
+        
 
     }
 }
