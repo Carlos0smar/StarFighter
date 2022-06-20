@@ -3,18 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/StaticMeshActor.h"
+#include "GameFramework/Actor.h"
 #include "Capsula.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class STARFIGHTER_API ACapsula : public AStaticMeshActor
+class STARFIGHTER_API ACapsula : public AActor
 {
 	GENERATED_BODY()
 	
-private:
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Datos", meta = (AllowPrivateAccess = "true"))
 	FString CapsulaName;
@@ -22,6 +22,9 @@ private:
 public:
 	ACapsula();
 
+
+	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+		class UStaticMeshComponent* ShipMeshComponent;
 
 //	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Datos", meta = (AllowPrivateAccess = "true"))
 //		float MenosVida;
@@ -39,9 +42,10 @@ public:
 		class URandomMovementComponent_BP* MoveRandCap;
 
 	virtual void PickUp();
+	virtual void Generar();
 //	FORCEINLINE float GetMenosVida(float quitar){ return quitar -= 5; };
 
-	FORCEINLINE FString GetCapsulaName() const { return CapsulaName; };
-	FORCEINLINE void SetCapsulaName(const FString _CapsulaName) { CapsulaName = _CapsulaName; }
+	FString GetCapsulaName() { return CapsulaName; };
+	void SetCapsulaName(const FString _CapsulaName) { CapsulaName = _CapsulaName; }
 
 };

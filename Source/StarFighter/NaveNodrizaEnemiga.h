@@ -46,7 +46,7 @@ public:
 	FTimerHandle TimerHandle_ShotTimerExpired;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-		float FireRate;
+	float FireRate;
 
 	UPROPERTY();
 	class URandomMovementComponent* RandMove;

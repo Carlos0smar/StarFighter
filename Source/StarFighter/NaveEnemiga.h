@@ -14,15 +14,18 @@ class STARFIGHTER_API ANaveEnemiga : public ANave
 {
 	GENERATED_BODY()
 
+public:
 	UPROPERTY()
-		class ARandomMovementComponent* MoveHeadOn;
+		class URandomMovementComponent* MoveAhead;
 
 	UPROPERTY()
-		class ARandomMovementComponent_BP* RandMove;
+		class URandomMovementComponent_BP* RandMove;
 
 	UPROPERTY()
-		class AAleronComponent* Aleron;
+		class UAleronComponent* Aleron;
 
 	UPROPERTY()
-		class AMotorComponent* Motor;
+		class UMotorComponent* Motor;
+
+	//void FeaturesNaveENemiga();
 };

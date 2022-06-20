@@ -22,4 +22,11 @@ class STARFIGHTER_API INaveEnemigaBuilder
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	
+	virtual class UAleronComponent* BuildAleron() = 0;
+	virtual class UMotorComponent* BuildMotor() = 0;
+	virtual class URandomMovementComponent* BuildMoveAhead() = 0;
+	virtual class URandomMovementComponent_BP* BuildMoveRandom() = 0;
+
+
 };

@@ -2,7 +2,8 @@
 
 
 #include "DirectorNaveEnemiga.h"
-
+#include "NaveEnemigaBuilder.h"
+#include "NaveEnemiga.h"
 // Sets default values
 ADirectorNaveEnemiga::ADirectorNaveEnemiga()
 {
@@ -11,6 +12,7 @@ ADirectorNaveEnemiga::ADirectorNaveEnemiga()
 
 }
 
+
 // Called when the game starts or when spawned
 void ADirectorNaveEnemiga::BeginPlay()
 {
@@ -18,6 +20,15 @@ void ADirectorNaveEnemiga::BeginPlay()
 	
 }
 
+ANaveEnemiga* ADirectorNaveEnemiga::GetNaveEnemiga()
+{
+
+
+	NaveEnemiga->MoveAhead = NaveEnemigaBuilder->BuildMoveAhead();
+
+
+	return nullptr;
+}
 // Called every frame
 void ADirectorNaveEnemiga::Tick(float DeltaTime)
 {

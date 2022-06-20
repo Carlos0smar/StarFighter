@@ -4,23 +4,19 @@
 #include "Capsula.h"
 #include "RandomMovementComponent_BP.h"
 
-ACapsula::ACapsula():Super()
+ACapsula::ACapsula()
 {
 
 	PrimaryActorTick.bCanEverTick = true;
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile'"));
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 
-	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile'"));
-	if (MeshAsset.Object != nullptr)
-	{
-		GetStaticMeshComponent()->SetStaticMesh(MeshAsset.Object);
-		GetStaticMeshComponent()->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
+	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
+	RootComponent = ShipMeshComponent;
+	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
+	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
 
-	}
-	GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
-	SetActorEnableCollision(true);
-
-	SetCapsulaName("Velocidad");
-	 
+	SetActorEnableCollision(true);	 
 
 	MoveRandCap = CreateDefaultSubobject<URandomMovementComponent_BP>(TEXT("MoverRandCap"));
 
@@ -44,5 +40,10 @@ void ACapsula::PickUp()
 	SetActorTickEnabled(false);
 	SetActorHiddenInGame(true);
 	SetActorEnableCollision(false);
+}
+
+void ACapsula::Generar()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Generando la capsula %s"), *GetCapsulaName()));
 }
  
